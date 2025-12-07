@@ -14,6 +14,7 @@
   },
   "scripts": {
     "day1:part1": "bun day1/part1.ts",
-    "day1:part2": "bun day1/part2.ts"
+    "day1:part2": "bun day1/part2.ts",
+    "day2:part1": "bun day2/part1.ts"
   }
 }
