@@ -8,7 +8,7 @@ const input = await Bun.file("inputs/day2.txt").text();
 
 const result = input
   .toRanges()
-  .flatMap((range: Range) => range.toPatternedNumbers())
+  .flatMap((range: Range) => range.toOnceRepeatedNumbers())
   .reduce((acc, curr) => acc + curr, 0);
 
 console.log(`Answer: ${result}`);
