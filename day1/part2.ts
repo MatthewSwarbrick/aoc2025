@@ -1,4 +1,4 @@
-import { mapToRotationInstructions, wrap } from "./common";
+import { countZeroHits, mapToRotationInstructions, wrap } from "./common";
 
 // const input = [
 //   "L68",
@@ -16,9 +16,18 @@ import { mapToRotationInstructions, wrap } from "./common";
 const input = (await Bun.file("inputs/day1.txt").text()).split("\n");
 
 const maxPosition = 99;
-const initialStepResult = { position: 50, zeroCounts: 0 };
+const initialStepResult = { position: 50, numberOfTimesZeroWasHit: 0 };
 const result = mapToRotationInstructions(input).reduce(
   (stepResult, instruction) => {
+    const { position: currentPosition, numberOfTimesZeroWasHit } = stepResult;
+
+    const zeroHits = countZeroHits(
+      instruction.direction,
+      instruction.steps,
+      currentPosition,
+      maxPosition
+    );
+
     const newPosition =
       instruction.direction === "L"
         ? wrap(stepResult.position - instruction.steps, maxPosition)
@@ -26,10 +35,10 @@ const result = mapToRotationInstructions(input).reduce(
 
     return {
       position: newPosition,
-      zeroCounts: stepResult.zeroCounts + (newPosition === 0 ? 1 : 0),
+      numberOfTimesZeroWasHit: numberOfTimesZeroWasHit + zeroHits,
     };
   },
   initialStepResult
 );
 
-console.log(`Answer: ${result.zeroCounts}`);
+console.log(`Answer: ${result.numberOfTimesZeroWasHit}`);
