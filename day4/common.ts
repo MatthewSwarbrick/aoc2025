@@ -30,6 +30,19 @@ class PaperGrid extends Map<string, PaperGridLocation> {
       this.get(key({ x: coordinate.x, y: coordinate.y + 1 })),
     ].filter((location) => location !== undefined);
   }
+
+  removeFromGrid(paperRolls: PaperGridLocation[]): PaperGrid {
+    const toRemove = new Set(
+      paperRolls.map((r) => `${r.coordinate.x},${r.coordinate.y}`)
+    );
+
+    return new PaperGrid(
+      [...this.entries()].filter(
+        ([_, value]) =>
+          !toRemove.has(`${value.coordinate.x},${value.coordinate.y}`)
+      )
+    );
+  }
 }
 
 type Coordinate = {
