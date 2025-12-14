@@ -5,6 +5,10 @@ export class Problem {
     this.numbers.push(number);
   }
 
+  addNumbers(numbers: number[]) {
+    this.numbers.push(...numbers);
+  }
+
   evaluate() {
     return this.numbers.reduce((acc, num) => {
       if (this.operator === "+") {
