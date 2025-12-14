@@ -25,6 +25,8 @@
     "day5:part2": "bun day5/part2.ts",
     "day6:part1": "bun day6/part1.ts",
     "day6:part2": "bun day6/part2.ts",
-    "day7:part1": "bun day7/part1.ts"
+    "day7:part1": "bun day7/part1.ts",
+    "day7:part2": "bun day7/part2.ts",
+    "day8:part1": "bun day8/part1.ts"
   }
 }
